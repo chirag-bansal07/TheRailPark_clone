@@ -7,12 +7,22 @@ html{
     width: 100%;
     box-sizing: border-box;
 }
+@font-face {
+    font-family: "therail";
+    src: url(./fonts/ArminGrotesk-Black.woff2);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "parathin";
+    src: url(./fonts/ArminGrotesk-Regular.woff2);
+}
 body {
+    font-family: "therail",sans-serif;
     position: relative;
     display: flex;
     flex-direction: column ;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
     margin-top: 10%;
     margin-bottom: 0;
     padding: 0;
@@ -21,6 +31,8 @@ body {
     align-self: center;
     justify-content: center;
     background-color: #FAF9F7;
+    cursor: url(./images/logo.svg),auto;
+
 }
 @media (max-width: 1025px) {
     body{
@@ -28,6 +40,18 @@ body {
         align-self: center;
     }    
 
+}
+h1{
+    font-weight: 900 ;
+}
+h2{
+    font-weight:500 ;
+}
+h4{
+    font-family: "parathin", sans-serif;
+}
+p{
+   font-family: "parathin", sans-serif;
 }
 .menu-body{
     margin-top: 5.9rem;
@@ -52,7 +76,7 @@ header.hidden {
     align-items: center !important;
 }
 .middle p{
-    font-weight:100;
+    font-weight:200;
     font-size: 1.2rem;
 }
 .fa-magnifying-glass{
@@ -262,12 +286,12 @@ a{
     
 }
 .hero h1{
-    font-family: 'Raleway', sans-serif;
     font-size: 7.5rem;
     color: #131313;
 }
 .herohead{
     padding-left:14% ;
+    line-height: 6rem;
 }
 .slider-container {
     width: 100%;
@@ -669,6 +693,8 @@ a{
 }
 .visiting h1{
     font-size: 70px;
+    font-family: "parathin", sans-serif;
+    font-weight: 900;
 }
 
 .box2_left{
@@ -682,6 +708,8 @@ a{
     color: #04c75c;
     width: 44vw;
     cursor: default;
+    cursor: url(./images/icons8-play-24.png),auto;
+
 }
 .Directions{
     display: flex;
@@ -859,9 +887,16 @@ a{
     flex-direction: column;
     align-items:center ;
     justify-content: space-between;
+    font-family: "parathin", sans-serif;
 }
 .location .flex{
     width: 100%;
+}
+.location h2{
+    font-family: "parathin", sans-serif;
+}
+.location p{
+    font-weight: 100;
 }
 .footer_hov:hover{
     color:#04c75c;
@@ -1095,6 +1130,7 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "parathin", sans-serif;
 }
 .image_con{
     display: flex;
@@ -1222,6 +1258,9 @@ footer{
     background-color: #131313;
     justify-content: space-evenly;
     align-items: center;
+    cursor: url(./images/logo\ copy.svg),auto;
+    font-family: "parathin", sans-serif;
+
 }
 .footer_comp{
     display: flex;
@@ -1231,7 +1270,12 @@ footer{
     justify-content: space-evenly;
 }
 .comp1{
-    justify-content:space-between ;
+    flex-wrap: wrap;
+    justify-content:flex-end;
+}
+.comp1 svg{
+    cursor: url(./images/icons8-dollar-sign-24.png), auto;
+
 }
 .footer_svg{
     position: absolute;
@@ -1239,6 +1283,10 @@ footer{
     left: 2%;
     fill:white ;
     margin-bottom: 2rem;
+}
+.copyR{
+    display: flex;
+    align-self: end;
 }
 .footer_vid{
     width: 10rem;
