@@ -369,7 +369,7 @@
         <div class="box1_left">
           <img
             class="img_visiting vid-image"
-            src="https://images.prismic.io/railpark/28507bd7-e937-4074-87b0-95751194f4c1_noble-entrance.jpg?ixlib=gatsbyFP&amp;auto=compress%2Cformat&amp;fit=max&amp;q=50"
+            src="https://images.prismic.io/railpark/28507bd7-e937-4074-87b0-95751194f4c1_noble-entrance.jpg?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&q=50&w=1247&h=702"
             alt="visiting1"
           />
           <video
@@ -912,51 +912,65 @@
 
       previousScrollPosition = currentScrollPosition;
     });
+ // ---------------------------------------------------------------------------------------------------
+    document.addEventListener("DOMContentLoaded", function () {
+        let currentIndex = 0;
+  const slides = document.querySelector('.slides');
+  const totalSlides = document.querySelectorAll('.slide').length;
+  const image = document.querySelectorAll(".slider_img");
+  const slide_text = document.querySelectorAll(".animateText");
 
-    let currentSlide = 1;
-    function changeSlide(n) {
-      showSlide((currentSlide += n));
-    }
-
-    function showSlide(n) {
-      const slides = document.querySelector(".slides");
-      const spin = document.querySelector(".slider_spin");
-      const image = document.querySelectorAll(".slider_img");
-      const totalSlides = document.querySelectorAll(".slide").length;
-      const animateText = document.querySelectorAll(".animateText");
-      if (n > totalSlides) {
-        currentSlide = 1;
+  function showSlide(index) {
+    const currentTransform = -index * 100 + '%';
+    slides.style.transform = 'translateX(' + currentTransform + ')';
+    image.forEach((image,img_index)=>{
+      if(img_index===index){
+        image.style.transform='rotate(0) translateX(0) translateY(0)'
+        image.style.opacity='1'
+        image.style.transition="transform 2s linear, opacity 3.5s ease-in-out";
       }
-
-      if (n < 1) {
-        currentSlide = totalSlides;
+     
+      else{
+        image.style.transform='rotate(-45deg) translateX(-50rem) translateY(80rem)'  
+        image.style.opacity='0'
+        image.style.transition="transform 2s linear, opacity .5s ease-in-out";
       }
-
-      const translateValue = -(currentSlide - 1) * 100 + "%";
-      slides.style.transform = "translateX(" + translateValue + ")";
-
-      image.forEach((img, index) => {
-        if (index + 1 === currentSlide) {
-          img.style.transform = `translateY(0) translateX(0) rotate(0deg)`;
-        } else {
-          img.style.transform = `translateY(50rem) translateX(-20rem) rotate(-45deg)`;
-        }
-      });
-      animateText.forEach((animateText, index) => {
-        if (index + 1 === currentSlide) {
-          animateText.style.transform = "translateY(0) translateX(0)";
-        } else {
-          animateText.style.transform = "translateY(100rem) translateX(25rem)";
-        }
-      });
-
-      if (n == 2) {
-        spin.style.display = "block";
-      } else {
-        spin.style.display = "none";
+    })
+    slide_text.forEach((text,text_index)=>{
+      if(text_index===index){
+        text.style.transform='translateY(0) translateX(0)'
+        text.style.transitionDelay='.5s'
+        text.style.opacity='1'
+        text.style.transition=" transform 2.5s, opacity 6s";
       }
-    }
+      else{
+        text.style.transform='translateY(100rem) translateX(85rem)'  
+        text.style.transitionDelay='0s'
+        text.style.opacity='0'
+        text.style.transition=" transform 2.5s, opacity .5s";
+      }
+      if(text_index-1===index){
+        text.style.transform='translateY(80rem) translateX(-15rem)'
+        text.style.transition=''
+        text.style.transitionDelay='0s'     
+      }
+    })
+  }
 
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    showSlide(currentIndex);
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    showSlide(currentIndex);
+  }
+  showSlide(currentIndex);
+  document.querySelector('.next').addEventListener('click', nextSlide);
+  document.querySelector('.prev').addEventListener('click', prevSlide);
+});
+// -----------------------------------------------------------------------------------------------
     document.addEventListener("DOMContentLoaded", function () {
       const hoverVideo = document.querySelector(".hover-video");
       const customCursor = document.querySelector(".custom-cursor");
@@ -971,8 +985,6 @@
 
         const halfWidth = x - hoverVideo.width / 2;
         const halfHeight = y - hoverVideo.height / 2;
-        console.log(hoverVideo.width);
-
         hoverVideo.style.left = `${halfWidth}px`;
         hoverVideo.style.top = `${halfHeight}px`;
       });
@@ -987,36 +999,5 @@
         customCursor.style.opacity = 0;
       });
     });
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    document.querySelector(".slider").addEventListener("touchstart", (e) => {
-      touchStartX = e.touches[0].clientX;
-    });
-
-    document.querySelector(".slider").addEventListener("touchend", (e) => {
-      touchEndX = e.changedTouches[0].clientX;
-      handleSwipe();
-    });
-    const nextSlide = () => {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      showSlide();
-    };
-
-    const prevSlide = () => {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      showSlide();
-    };
-    const handleSwipe = () => {
-      const swipeDistance = touchStartX - touchEndX;
-      const minSwipeDistance = 50; // Adjust as needed
-
-      if (swipeDistance > minSwipeDistance) {
-        nextSlide();
-      } else if (swipeDistance < -minSwipeDistance) {
-        prevSlide();
-      }
-    };
   </script>
 </html>

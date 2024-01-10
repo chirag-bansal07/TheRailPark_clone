@@ -246,21 +246,10 @@ a{
 }
 .menuconp h1{
     font-size: 3.5rem;
-
+    
 }
 .hero{
     width: 100%;
-}
-.slider-container {
-    width: 100%;
-    overflow: hidden;
-    margin: auto;
-}
-
-.slides {
-    display: flex;
-    transition: opacity 1s ease-in-out;
-    transition: transform 2s ;
 }
 .slider_spin{
     display: none;
@@ -270,12 +259,8 @@ a{
     left: 182%;
     object-fit: contain;
     position: absolute;
-
+    
 }
-
-.slide {
-    min-width: 100%;
-    padding: 0 15%;}
 .hero h1{
     font-family: 'Raleway', sans-serif;
     font-size: 7.5rem;
@@ -284,9 +269,20 @@ a{
 .herohead{
     padding-left:14% ;
 }
-.animateText{
-    transition: transform 1.5s;
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
 }
+
+.slides {
+    display: flex;
+    transition: transform 1s ease-in ;
+}
+
+.slide {
+    min-width: 100%;
+    padding: 0 15%;}
 .slide p{
     color: #131313;
     font-size: 2.5rem;
@@ -296,40 +292,10 @@ a{
 .slider_img{
     width: 49.54vw;
     height: 100%;
-    transition: transform .6s ease-in-out;
 }
 .mobile-show{
     display: none;
-}
-@keyframes current { 
-    0% { 
-        transform-origin: right bottom; 
-        transform: rotate(-90deg); 
-        opacity: 0; 
-    } 
-    100% { 
-        transform-origin: right bottom; 
-        transform: rotate(0); 
-        opacity: 1; 
-    } 
 } 
-
-@keyframes last { 
-    0% { 
-        transform-origin: right bottom; 
-        transform: rotate(0deg); 
-        opacity: 0; 
-    } 
-    100% { 
-        transform-origin: right bottom; 
-        transform: rotate(-90deg); 
-        opacity: 1; 
-    } 
-} 
-.slider_img { 
-    transition: transform 2s ;
-}
-
 .arrow{
     font-size: 1.5rem;
     color: #04c75c;
