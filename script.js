@@ -16,11 +16,16 @@ const body = document.querySelector("body");
       const lang = document.querySelector(".lang");
       const mobilemenu_logo = document.querySelector(".menumobile-logo");
       const donate = document.querySelector(".DONATE");
+      const animate_bottom = document.querySelector(".content_bottom");
       const mobilemenuani = document.querySelector(".mobilemenu");
       div.addEventListener("click", function () {
         spam.classList.toggle("rotate1");
         div.classList.toggle("no-gap");
         spam2.classList.toggle("rotate2");
+        setTimeout(() => {
+          animate_bottom.classList.toggle("content_bottom-animation");
+        }, 20);
+        
         headermid.classList.toggle("hide");
         mid_menu.classList.toggle("show");
         headermain.classList.toggle("mobile_headermain");
@@ -177,16 +182,18 @@ const body = document.querySelector("body");
 // -----------------------------------------------------------------------------------------------
     document.addEventListener("DOMContentLoaded", function () {
       const hoverVideo = document.querySelector(".hover-video");
+      const hoverVideoW = document.querySelector(".hover-video").offsetWidth;
+      const hoverVideoH = document.querySelector(".hover-video").offsetHeight;
       const customCursor = document.querySelector(".custom-cursor");
       const H = document.querySelector(".hover_vid");
 
       H.addEventListener("mousemove", function (e) {
         const x = e.clientX;
         const y = e.clientY;
-        const halfWidth = x - hoverVideo.width / 2;
-        const halfHeight = y - hoverVideo.height / 2;
-        hoverVideo.style.left = `${halfWidth}px`;
-        hoverVideo.style.top = `${halfHeight}px`;
+        const hoverVideoT= y- (hoverVideoH/2);
+        const hoverVideoL= x- (hoverVideoW/2);
+        hoverVideo.style.left = `${hoverVideoL}px`;
+        hoverVideo.style.top = `${hoverVideoT}px`;
       });
 
       H.addEventListener("mouseenter", function () {

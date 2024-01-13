@@ -55,6 +55,7 @@ p{
 }
 .menu-body{
     margin-top: 5.9rem;
+    background-color: #131313;
 }
 header{
     position: fixed;
@@ -221,8 +222,7 @@ header.hidden {
     align-items: flex-start;
     justify-content: space-between;
     opacity: 0;
-    transform: translateY(10rem);
-    transition: opacity .2s ease, transform .2s ease;
+    transition: opacity .2s ease;
 }
 .menuconp .icon{
     width: 70%;
@@ -233,7 +233,6 @@ header.hidden {
 }
 .open_transition{
     opacity: 1;
-    transform: translateY(0);
 }
 .menuconp h3:hover{
     cursor: pointer;
@@ -258,6 +257,11 @@ header.hidden {
     display: flex;
     justify-content: space-between;
     margin-top: 9rem;
+    transform: translateX(-200%);
+    transition: all 1s ease;
+}
+.content_bottom-animation{
+    transform: translateX(0);
 }
 .botton_sub{
     display: flex;
@@ -525,7 +529,7 @@ a{
     }
 }
 .visiting{
-    margin-top: 6rem;
+    margin-top: 2rem;
     width: 100%;
     padding:0 8% ;
 }
@@ -537,7 +541,8 @@ a{
 
 .vid_visiting {
     width: 34.53vw;
-    height: 100%;
+    height: auto;
+    transform: translateY(.2rem);
     border-radius: 5%;
     opacity: 0;
     position: relative;
@@ -593,7 +598,7 @@ a{
 .hover_div{
     display: flex;
     position: absolute;
-    background-color: #04c75c;
+    background-color: transparent;
     clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%, 5% 90%);
     color: white;
     height: 84px;
@@ -601,17 +606,26 @@ a{
     opacity: 0;
     width: 264px;
     text-align: center;
-    right: 16%;
-    padding: 13px;
+    right: 16vw;
     z-index: 2;
     border-radius: 9%;
-    transition: opacity .7s ease-in-out;
     margin-bottom: 80px;
+}
+
+.hoverdiv_animation{
+    background-color: #04c75c;
+    clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%, 5% 90%);
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: .5rem;
+    transform: translateX(-100%);
+    transition: transform .5s ease;
 }
 .hovershow{
     display: flex;
     gap: 1rem;
-    width: 20%;
+    width: 10%;
     box-sizing: border-box;
     align-items: center;
 }
@@ -627,6 +641,9 @@ a{
 }
 .hovershow:hover .hover_div{
     opacity: 1;
+}
+.hovershow:hover .hoverdiv_animation{
+    transform: translateX(0);
 }
 .hover-video {
     position: fixed;
@@ -774,7 +791,7 @@ a{
         font-size: 2.8rem;
     }
     .hover_div{
-        right: 2%;
+        right: 0%;
     }
     .sec_div{
         left: 46%;
@@ -868,9 +885,6 @@ a{
     }
 }
 @media (max-width: 750px){
-    .text{
-
-    }
     .text h1{
         font-size: 3rem;
     }
@@ -882,7 +896,7 @@ a{
     width: 100%;
     height: auto;
     padding:0 2%;
-    margin-top: 12.5rem;
+    margin-top: 5.5rem;
     display: flex;
     flex-direction: column;
     align-items:center ;
@@ -1185,7 +1199,7 @@ a{
     position: absolute;
     right: 13rem;
     z-index: 1;
-    bottom: 80rem;
+    bottom: 265px;
 }
 
 @media (max-width: 1225px) {
